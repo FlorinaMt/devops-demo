@@ -66,11 +66,20 @@ jobs:
           username: ${{ secrets.MY_DOCKER_USERNAME }}
           password: ${{ secrets.MY_DOCKER_TOKEN }}
 
+      # - name: Build Docker image
+      #   run: docker build -t devops-demo-taskapp .
+
+      # - name: Push Docker image to Docker Hub
+      #   run: docker push devops-demo-taskapp
+
+
       - name: Build Docker image
-        run: docker build -t devops-demo-taskapp .
+        run: docker build -t ${{ secrets.MY_DOCKER_USERNAME }}/devops-demo-taskapp:${{ github.sha }} .
 
       - name: Push Docker image to Docker Hub
-        run: docker push devops-demo-taskapp
+        run: docker push ${{ secrets.MY_DOCKER_USERNAME }}/devops-demo-taskapp:${{ github.sha }}
+
+
 
   deploy:
     runs-on: ubuntu-latest
