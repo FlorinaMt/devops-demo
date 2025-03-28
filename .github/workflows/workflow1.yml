@@ -67,10 +67,10 @@ jobs:
           password: ${{ secrets.MY_DOCKER_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t devops-image .
+        run: docker build -t devops-demo-taskapp .
 
       - name: Push Docker image to Docker Hub
-        run: docker push devops-image
+        run: docker push devops-demo-taskapp
 
   deploy:
     runs-on: ubuntu-latest
