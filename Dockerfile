@@ -15,6 +15,7 @@ ENTRYPOINT ["java", "-jar", "/devops-demo-1.0.jar"]
 # WORKDIR /app
 # COPY pom.xml /app
 # COPY src/app/src
+# RUN apk add --no-cache curl
 # RUN mvn -B package --file pom.xml -DskipTests
 
 # FROM eclipse-temurin:21-jdk-alpine
